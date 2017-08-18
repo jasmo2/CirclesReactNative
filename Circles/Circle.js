@@ -28,7 +28,9 @@ export default class Circles extends React.Component {
         <Image 
           style={gradientImgSty}
           source={gradientImg}
-        />
+        >
+          {children}
+        </ Image>
         <Image
           style={[iconImgSty, movieImgSty]} 
           source={movieImg}
@@ -65,6 +67,8 @@ const styles = StyleSheet.create({
     width: gradientImgSize,
     height: gradientImgSize,
     position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
     top: 100
   },
   circleGradientImgSty: {
