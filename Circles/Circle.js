@@ -1,63 +1,96 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Svg,{
-  Circle,
-  Ellipse,
-  RadialGradient,
-  Text,
-  Defs,
-  Stop
-} from 'react-native-svg';
+import { StyleSheet, Image, View } from 'react-native';
+
+const gradientImg = require('../images/shape_gradient.png');
+const movieImg = require('../images/movie.png');
+const facebookImg = require('../images/facebook.png');
+const goodReadImg = require('../images/goodread.png');
+const musicImg = require('../images/mosuc.png');
+const circleGradientImg = require('../images/gradient.png');
 
 export default class Circles extends React.Component {
   render() {
-    const { size, color, children } = props;
-    const { container } = styles;
-    const radius = size/2;
+    const { size, color, children } = this.props;
+    const { 
+      container,
+      image,
+      gradientImgSty,
+      circleGradientImgSty,
+      iconImgSty,
+      goodReadImgSty,
+      facebookImgSty,
+      musicImgSty,
+      movieImgSty
+    } = styles;
 
     return (
-      <View style={[container, circleStyles]}>
-        <Svg
-          height="150"
-          width="300"
-        >
-          <Defs>
-            <RadialGradient id="grad" 
-              cx={radius} 
-              cy={radius}
-              rx={radius}
-              ry={radius}
-              fx={radius} 
-              fy={radius}
-              gradientUnits="userSpaceOnUse"
-            >
-              <Stop
-                offset="0"
-                stopColor="#52ecff"
-                stopOpacity="1"
-              />
-              <Stop
-                offset="0.05"
-                stopColor="rgba(82, 236, 228, 0.5)"
-                stopOpacity="1"
-              />
-              <Stop
-                offset="0.1"
-                stopColor="rgba(0, 0, 0, 0)"
-                stopOpacity="1"
-              />
-            </RadialGradient>
-          </Defs>
-          <Ellipse cx={radius} cy={radius} rx={radius} ry={radius} fill="url(#grad)" />
-        </Svg>
+      <View style={container}>
+        <Image 
+          style={gradientImgSty}
+          source={gradientImg}
+        />
+        <Image
+          style={[iconImgSty, movieImgSty]} 
+          source={movieImg}
+        />
+        <Image
+          style={[iconImgSty, facebookImgSty]} 
+          source={facebookImg}
+        />
+        <Image
+          style={[iconImgSty, goodReadImgSty]} 
+          source={goodReadImg}
+        />
+        <Image
+          style={[iconImgSty, musicImgSty]} 
+          source={musicImg}
+        />
+        <Image
+          style={[gradientImgSty, circleGradientImgSty]} 
+          source={circleGradientImg}
+        />
       </View>
     );
   }
 }
 
+const gradientImgSize = 180;
+const IconImgSize = 50;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgba(82, 236, 228, 0.8)'
+    alignItems: 'center'
+  },
+  gradientImgSty: {
+    width: gradientImgSize,
+    height: gradientImgSize,
+    position: 'absolute',
+    top: 100
+  },
+  circleGradientImgSty: {
+    top: 91,
+    width: gradientImgSize * 1.10,
+    height: gradientImgSize * 1.10,
+  },
+  iconImgSty: {
+    width: IconImgSize,
+    height: IconImgSize,
+    position: 'absolute'
+  },
+  goodReadImgSty: {
+    top: 90,
+    right: 80
+  },
+  musicImgSty: {
+    top: 90,
+    left: 80
+  },
+  facebookImgSty: {
+    top: 35,
+    right: 20
+  },
+  movieImgSty: {
+    top: 35,
+    left: 20
   }
 });

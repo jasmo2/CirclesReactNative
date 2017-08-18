@@ -5,29 +5,36 @@
  */
 
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, AppRegistry } from 'react-native';
 import Circles from './Circles';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <View>
+        <View style={styles.subContainer} />
+
+        <View style={{flex: 33}}>
           <Circles />
         </View>
-        <Text>Shake your phone to open the developer menu.</Text>
+
+        <View style={styles.subContainer} />
+
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  subContainer: {
+    flex: 33,
+    backgroundColor: 'red'
+  },
   container: {
     flex: 1,
     backgroundColor: 'darkblue',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
 });
 
